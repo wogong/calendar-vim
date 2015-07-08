@@ -1042,13 +1042,7 @@ function! calendar#diary(day, month, year, week, dir)
       return
     endif
   endif
-  let sfile = sfile . "/" . printf("%02d", a:month)
-  if isdirectory(sfile) == 0
-    if s:make_dir(sfile) != 0
-      return
-    endif
-  endif
-  let sfile = expand(sfile) . "/" . printf("%02d", a:day) . ".md"
+  let sfile = expand(sfile) . "/" .printf("%04d", a:year) . "-" . printf("%02d", a:month) . "-" . printf("%02d", a:day) . ".txt"
   let sfile = substitute(sfile, ' ', '\\ ', 'g')
   let vbufnr = bufnr('__Calendar')
 
